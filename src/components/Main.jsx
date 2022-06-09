@@ -30,13 +30,23 @@ const getFilms = async (searchValue) => {
     getFilms(searchValue);
   }, [searchValue])
 
-  return (
+  if(films.Response === "True"){
+    return (
     <div>
         <h1>Movies App</h1>
         <Search setSearchValue={setSearchValue}/>
         <Films films={films}/>
     </div>
   )
+  } else {
+    return(
+      <div>
+        <h1>Movies App</h1>
+        <Search setSearchValue={setSearchValue}/>
+      </div>
+    )
+  }
+  
 }
 
 export default Main

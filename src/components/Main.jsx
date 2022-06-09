@@ -15,7 +15,13 @@ const setSearchValue = (val) =>{
   setSearch(val);
 }
 
-
+const getFilms = async (searchValue) => {
+  const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=263d22d8`
+        const response = await fetch(url)
+        const responseJson = await response.json();
+        SetFilms(responseJson);
+        console.log(films);
+}
 //useEfefect atsakingas uz metodo getFilms iskvietima
 //tikrina, ar pasikeite state reiksme -> searchValue
 //jei pasikeite runina viduje aprasyta metoda -> getFilms
@@ -28,7 +34,7 @@ const setSearchValue = (val) =>{
     <div>
         <h1>Movies App</h1>
         <Search setSearchValue={setSearchValue}/>
-        <Films/>
+        <Films films={films}/>
     </div>
   )
 }
